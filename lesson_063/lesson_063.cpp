@@ -1,4 +1,4 @@
-﻿//Цикл foreach C++ | range-based циклы | Изучение С++ для начинающих. Урок #137 - Видео №161. 
+﻿//Цикл foreach C++ | range-based циклы | Изучение С++ для начинающих. Урок #137 - Видео №78. 
 
 #include<iostream>
 #include<list>

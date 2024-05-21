@@ -1,4 +1,4 @@
-﻿//Модификаторы доступа классов. public private protected что это. Спецификаторы доступа. C++ Урок #75 - Видео №88
+﻿//Модификаторы доступа классов. public private protected что это. Спецификаторы доступа. C++ Урок #75 - Видео №4
 
 #include<iostream>
 #include<string>

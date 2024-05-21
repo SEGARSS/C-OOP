@@ -1,4 +1,4 @@
-﻿//auto_ptr | unique_ptr | shared_ptr | Умные указатели. Изучение С++ для начинающих. Урок #131 - Видео № 151.
+﻿//auto_ptr | unique_ptr | shared_ptr | Умные указатели. Изучение С++ для начинающих. Урок #131 - Видео № 68.
 
 #include<iostream>
 #include<string>
