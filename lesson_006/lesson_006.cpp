@@ -1,48 +1,12 @@
 ﻿// Перегрузка конструкторов класса. Что такое перегрузка. Как перегрузить конструктор. Урок#79 - Видео 8.
 
 #include<iostream>
-#include<string>
 using namespace std;
 
-class human
-{
-public:
-	int are;
-	int witch;
-	string name;
 
-};
-
-class CoffeeGrinder
-{
-private:
-	bool CheckVoltage()
-	{
-		return true;
-	}
-
-public:
-	void Start()
-	{
-		bool VoltageIsNormal = CheckVoltage();
-		if (VoltageIsNormal == true)
-		{
-			cout << "ViiyyyYYUU!" << endl;
-		}
-		else
-		{
-			cout << "NEMA TRRR! NEMA TRRR!" << endl;
-		}
-	}
-};
-
+//-----------------------------------------------------------------------------------------
 class point
 {
-private:
-
-	int x;
-	int y;
-
 public:
 
 	point()
@@ -51,7 +15,6 @@ public:
 		y = 0;
 	}
 
-	
 	point(int valueX, int valueY)
 	{
 		x = valueX;
@@ -61,6 +24,7 @@ public:
 	point(int valueX, bool bal)
 	{
 		x = valueX;
+
 		if (bal)
 		{
 			y = 1;
@@ -76,8 +40,11 @@ public:
 		cout << "X = " << x << "\t Y = " << y << endl << endl;
 	}
 
+private:
+	int x;
+	int y;
 };
-
+//-----------------------------------------------------------------------------------------
 int main()
 {
 	setlocale(LC_ALL, "ru");
@@ -93,8 +60,9 @@ int main()
 
 	return 0;
 }
-
-/*Перегрузка конструктора. Это создание ещё таковаже конструктора в нутри класса с таким же названием.
+//-----------------------------------------------------------------------------------------
+/*
+Перегрузка конструктора. Это создание ещё таковаже конструктора в нутри класса с таким же названием.
 К примеру у нас есть в класе поинт point конструктор с параметрами -
 
 point(int valueX, int valueY)

@@ -4,42 +4,9 @@
 #include<string>
 using namespace std;
 
-class Human
-{
-public:
-	int are;
-	int witch;
-	string name;
-};
-
-class CoffeeGrinder
-{
-private:
-	bool CheckVoltage()
-	{
-		return true;
-	}
-
-public:
-	void start()
-	{
-		bool VoltageIsNormal = CheckVoltage();
-		if (VoltageIsNormal == true)
-		{
-			cout << "ViiyyyYYUU" << endl;
-		}
-		else
-		{
-			cout << "NEMA TRR! NEMA TRRR!" << endl;
-		}
-	}
-};
-
+//----------------------------------------------------------------------------------------------------------------
 class point
 {
-	int x;
-	int y;
-
 public:
 	point()
 	{
@@ -54,6 +21,7 @@ public:
 		y = valueY;
 		cout << this << " Constructor" << endl;
 	}
+
 	int GetX()
 	{
 		return x;
@@ -69,37 +37,19 @@ public:
 	}
 	void SetY(int y)
 	{
-		this->y = y;
+		this -> y = y; //Без this, переменная (у) выдаст значение (0)
 	}
 
 	void Print()
 	{
 		cout << "X = " << x << "\t Y = " << y << endl << endl;
 	}
+
+private:
+	int x;
+	int y;
 };
-
-class MyClass
-{
-	int* data;
-
-public:
-	MyClass(int size)
-	{
-		data = new int[size];
-		for (int i = 0; i < size; i++)
-		{
-			data[i] = i;
-		}
-		cout << "Объек " << data << " Вызвался конструктор" << endl;
-	}
-
-	~MyClass()
-	{
-		delete[] data;
-		cout << "Объек " << data << " Вызвался деструктор" << endl;
-	}
-};
-
+//----------------------------------------------------------------------------------------------------------------
 int main()
 {
 	setlocale(LC_ALL, "ru");
@@ -108,18 +58,19 @@ int main()
 	a.SetY(5);
 	a.Print();
 
+	point b;
+	b.SetX(4);
+	b.Print();
 
 	return 0;
 }
-
-/*Ключевое слово this. Он по умолчанию, неявно указан в классах.
+//----------------------------------------------------------------------------------------------------------------
+/*
+Ключевое слово this. Он по умолчанию, неявно указан в классах.
 Пример его реализации, почему тут мы его вызвали.
 Напишем стандартный класс ниже, где он не нужен.
 class point
 {
-	int x;
-	int y;
-
 public:
 	point()
 	{
@@ -142,8 +93,14 @@ public:
 	{
 		cout << "X = " << x << "\t Y = " << y << endl << endl;
 	}
+
+private:
+	int x;
+	int y;
 };
+
 тут подмечаем, что если мы вызываем такую запись
+
 int main()
 {
 	setlocale(LC_ALL, "ru");
@@ -155,13 +112,11 @@ int main()
 
 	return 0;
 }
+
 Мы увидем в компеляторе что игрику присвоилась 5.
 Но, напишем тепероь клас point по другому.
 class point
 {
-	int x;
-	int y;
-
 public:
 	point()
 	{
@@ -176,7 +131,8 @@ public:
 		y = valueY;
 		cout << this << " Constructor" << endl;
 	}
-	void SetY(int y)
+
+	void SetY(int y) //Вместо int valueY - int y
 	{
 		y = y;
 	}
@@ -184,8 +140,14 @@ public:
 	{
 		cout << "X = " << x << "\t Y = " << y << endl << endl;
 	}
+
+private:
+	int x;
+	int y;
 };
+
 Мы в конструкторе поинт изменили данные записи с SetY(int valueY) на SetY(int y), и при вызове
+int main()
 {
 	setlocale(LC_ALL, "ru");
 
@@ -198,12 +160,10 @@ public:
 }
 мы получим 0, хотя указали в переменой a.SetY(5);
 Потомучто, компелятор по умолчанию прыгает на y = 0;
-Чтобы это обойти, прописываем в классе this.y = y;
+Чтобы это обойти, прописываем в методе SetY в его теле this.y = y;
+
 class point
 {
-	int x;
-	int y;
-
 public:
 	point()
 	{
@@ -226,6 +186,9 @@ public:
 	{
 		cout << "X = " << x << "\t Y = " << y << endl << endl;
 	}
+private:
+	int x;
+	int y;
 };
 И при запросе компелятора, мы увидим присвоенную 5 переменной y.
 С добавление ключевого слова this он как ссылка указывает, что именно возьми даннеые для переменной именно там,
