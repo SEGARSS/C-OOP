@@ -4,13 +4,10 @@
 #include<string>
 using namespace std;
 
+//-------------------------------------------------------------------------------------------------------
 class Apple
 {
-
 public:
-
-	
-
 	Apple(int weight, string color)
 	{
 		this->color = color;
@@ -19,17 +16,22 @@ public:
 		id = Count;
 	}
 
+	void TekeApple()
+	{
+		cout << "TekeApple " << "weight = " << weight << " color = " << color;
+	}
+
 	int GetId()
 	{
 		return id;
 	}
 
-	static int GetCount()
+	static int GetCount() //Если метод статитический, то только с такими данными и может рабоать. Переменная Count - static.
 	{
 		return Count;
 	}
 
-	static void ChangeColor(Apple& apple, string color)
+	static void ChangeColor(Apple &apple, string color)
 	{
 		apple.color = color;
 	}
@@ -40,31 +42,39 @@ private:
 	int id;
 	static int Count;
 };
-
+//-------------------------------------------------------------------------------------------------------
 int Apple::Count = 0;
-
+//-------------------------------------------------------------------------------------------------------
 int main()
 {
 	setlocale(LC_ALL, "ru");
 
 	Apple apple(150, "Red");
-
-	apple.ChangeColor(apple, "Green");
-	cout << "! ↨ Павнозначные записи друг другу ↨ !" << endl;
-	Apple::ChangeColor(apple, "Green");
-
 	Apple apple2(100, "Green");
 	Apple apple3(200, "Yellow");
 
+	//Записи равнозначны друг другу.
+	apple.ChangeColor(apple, "Green"); 
+	Apple::ChangeColor(apple, "Green");
+	
 	cout << "======================================================" << endl;
-	cout << apple.GetId() << endl;
-	cout << apple2.GetId() << endl;
-	cout << apple3.GetId() << endl;
-
+	cout << "Индификаторы присвоенные яблока." << endl;
+	apple.TekeApple();
+	cout << ": id - " << apple.GetId() << endl;
+	apple.TekeApple();
+	cout << ": id - " << apple2.GetId() << endl;
+	apple.TekeApple();
+	cout << ": id - " << apple3.GetId() << endl;
 	cout << "======================================================" << endl;
-	cout << apple3.GetCount() << endl;
-	cout << "! ↨ Павнозначные записи друг другу ↨ !" << endl;
-	cout << Apple::GetCount() << endl;
+	cout << "Записи равнозначны друг другу." << endl;
+	cout << "Синтакс написания - apple3.GetCount(), Вывод: " << apple3.GetCount() << " Общее количество яблок." << endl;
+	cout << "Синтакс написания - Apple::GetCount(), Вывод: " << Apple::GetCount() << " Общее количество яблок." << endl;
+	cout << "======================================================" << endl;
 
 	return 0;
 }
+//-------------------------------------------------------------------------------------------------------
+/*
+Базу индификаторов настроили, для вывода нужного, определённого сорта, и общее количество также выводим.
+Также настроили инкапсуляцию, защитили данные от изминений.
+*/
