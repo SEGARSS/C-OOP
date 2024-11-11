@@ -4,33 +4,21 @@
 #include<string>
 using namespace std;
 
-class Apple;
-class Human;
-
-class Human
-{
-public:
-	void TekeApple(Apple& apple);
-
-	void EatApple(Apple& apple)
-	{
-
-	}
-};
-
+//-------------------------------------------------------------------------------------------------------------------
 class Apple
 {
-
 public:
-
-	static int Count;
-
 	Apple(int weight, string color)
 	{
 		this->color = color;
 		this->weight = weight;
 		Count++;
-		id = Count;
+		id = Count; //Присваивание индификатора.
+	}
+
+	void TekeApple()
+	{
+		cout << "TekeApple " << "weight = " << weight << " color = " << color;
 	}
 
 	int GetId()
@@ -38,14 +26,16 @@ public:
 		return id;
 	}
 
+	static int Count;
+
 private:
 	int weight;
-	string color;
 	int id;
+	string color;
 };
-
+//-------------------------------------------------------------------------------------------------------------------
 int Apple::Count = 0;
-
+//-------------------------------------------------------------------------------------------------------------------
 int main()
 {
 	setlocale(LC_ALL, "ru");
@@ -54,9 +44,22 @@ int main()
 	Apple apple2(100, "Green");
 	Apple apple3(200, "Yellow");
 
-	cout << apple.GetId() << endl;
-	cout << apple2.GetId() << endl;
-	cout << apple3.GetId() << endl;
+	apple.TekeApple();
+	cout << ": id - " << apple.GetId() << endl;
+
+	apple2.TekeApple();
+	cout << ": id - " << apple2.GetId() << endl;
+
+	apple3.TekeApple();
+	cout << ": id - " << apple3.GetId() << endl;
 
 	return 0;
 }
+//-------------------------------------------------------------------------------------------------------------------
+/*
+Приминение индификатора. Чтобы в базе данных, небыло повторений.
+К примеру одинаковые ФИО, и чтобы их не перепутать.
+Поэтому сделали индивидуальный индификатор каждому сорту яблока.
+в языке SQL примерные схемы используются.
+По индификатору, мы уже понимаем, с кем примерно мы хотим рабоать и посмотреть.
+*/
