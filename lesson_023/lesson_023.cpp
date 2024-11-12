@@ -68,6 +68,7 @@ int main()
 		Pixel(244,244,14),
 		Pixel(111,179,64)
 	};
+
 	cout << arr1[0].GetInfo() << endl;
 	cout << arr1[1].GetInfo() << endl;
 	cout << arr1[2].GetInfo() << endl;
