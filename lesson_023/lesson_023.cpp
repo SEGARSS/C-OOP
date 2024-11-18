@@ -4,6 +4,7 @@
 #include<string>
 using namespace std;
 
+//-------------------------------------------------------------------------------------------------------------------
 class Pixel
 {
 public:
@@ -21,49 +22,25 @@ public:
 
 	string GetInfo()
 	{
-		return "Pixel: r = " + to_string(r) + " g = " + to_string(g) + " b = " + to_string(b);
+		return "Pixel:\tr = " + to_string(r) + "\tg = " + to_string(g) + "\tb = " + to_string(b);
 	}
 
 private:
 	int r, g, b;
 };
-
-class Image
-{
-public:
-
-	void GetImageInfo()
-	{
-		for (int i = 0; i < LENGTH; i++)
-		{
-			cout << "#" << i << " " << pixels[i].GetInfo() << endl;
-		}
-	}
-
-private:
-	static const int LENGTH = 5;
-
-	Pixel pixels[LENGTH]
-	{
-		Pixel(0,4,64),
-		Pixel(4,14,10),
-		Pixel(111,4,24),
-		Pixel(244,244,14),
-		Pixel(111,179,64)
-	};
-};
-
+//-------------------------------------------------------------------------------------------------------------------
 int main()
 {
 	setlocale(LC_ALL, "Ru");
 
 	cout << "Статический Массив" << endl;
+
 	const int LENGTH = 5;
 
 	Pixel arr1[LENGTH]
 	{
-		Pixel(0,4,64),
-		Pixel(4,14,10),
+		Pixel(378,4,64),
+		Pixel(401,14,10),
 		Pixel(111,4,24),
 		Pixel(244,244,14),
 		Pixel(111,179,64)
@@ -79,7 +56,7 @@ int main()
 
 	int LENG = 5;
 
-	Pixel* arr2 = new Pixel[LENG];
+	Pixel *arr2 = new Pixel[LENG]; 
 	arr2[0] = Pixel(25, 646, 46);
 	cout << arr2[0].GetInfo() << endl;
 
@@ -87,4 +64,5 @@ int main()
 
 	return 0;
 }
+//-------------------------------------------------------------------------------------------------------------------ы
 /*Работа с масивами с помощью классов.*/
