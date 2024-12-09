@@ -4,25 +4,27 @@
 #include<string>
 using namespace std;
 
-class Weapon
+//-------------------------------------------------------------------------------
+class Weapon //Абстрактный класс (оружие). Потомучто содали виртуальный метод и присовоели ему 0.
 {
 public:
 	virtual void Shoot() = 0;
+
 	void Foo()
 	{
 		cout << "Foo()" << endl;
 	}
 };
-
+//-------------------------------------------------------------------------------
 class Gun : public Weapon
 {
 public:
-	virtual void Shoot() override
+	void Shoot() override
 	{
 		cout << "BANG!" << endl;
 	}
 };
-
+//-------------------------------------------------------------------------------
 class SubmachineGun :public Gun
 {
 public:
@@ -31,7 +33,7 @@ public:
 		cout << "BANG!" << "BANG!" << "BANG!" << endl;
 	}
 };
-
+//-------------------------------------------------------------------------------
 class Bazuka :public Weapon
 {
 public:
@@ -40,16 +42,16 @@ public:
 		cout << "BADABUM!!!" << endl;
 	}
 };
-
+//-------------------------------------------------------------------------------
 class Knife :public Weapon
 {
 public:
 	void Shoot() override
 	{
-		cout << "CHIK CHIK" << endl;
+		cout << "CHIK CHIK" << endl; // Колим нажом
 	}
 };
-
+//-------------------------------------------------------------------------------
 class Player
 {
 public:
@@ -58,26 +60,31 @@ public:
 		weapon->Shoot();
 	}
 };
-
+//-------------------------------------------------------------------------------
 int main()
 {
 	setlocale(LC_ALL,"ru");
 
-	Gun gun;
-	SubmachineGun mach;
-	Bazuka baz;
-	Knife chil;
+	Gun gun;             //Пистолет
+	SubmachineGun mach; //Пулимёт
+	Bazuka baz;        //Базука
+	Knife chil;       //Ножь
 
-	Player player;
+	Player player; //Игрок
+
 	player.Shoot(&baz);
 	player.Shoot(&gun);
 	player.Shoot(&mach);
 	player.Shoot(&chil);
-	chil.Foo();
 
+	chil.Foo();
 
 	return 0;
 }
-/*Пример полиморфизма, когда все классы использую один метод одну функцию Shoot благодаря наследованию, вируальной функции Shoot
+/*
+Пример полиморфизма, когда все классы использую один метод одну функцию Shoot благодаря наследованию, вируальной функции Shoot
 и абстрактному класс Weapon.
-Упрощает написание кода, его реализацию и исправление.*/
+Упрощает написание кода, его реализацию и исправление.
+Напрямую пользоваться функцией void Foo() в классе Weapon мы не можем. 
+Но любой класс наследник, сможет вызвать и использовать данную функцию у класса Weapon.
+*/
