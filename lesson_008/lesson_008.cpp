@@ -31,13 +31,14 @@ public:
 		x = valueX;
 	}
 
-	int GetY()
+	int GetY() 
 	{
 		return y;
 	}
-	void SetY(int newY) // Параметр с другим именем
+	/*Вопрос. Тут, какой смымсл использовать this ?*/
+	void SetY(int valueY) // Параметр с другим именем
 	{
-		y = newY; // this -> y = y; //Без this, переменная (у) выдаст значение (0)
+		y = valueY; // this -> y = y; //Без this, переменная (у) выдаст значение (0)
 	}
 
 	void Print()
@@ -55,7 +56,7 @@ int main()
 	setlocale(LC_ALL, "ru");
 
 	point a;
-	a.SetY(5);
+	a.SetY(8);
 	a.Print();
 
 	point b;
